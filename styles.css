@@ -335,27 +335,34 @@ section { padding: 60px 5%; }
 .form-group textarea { resize: vertical; min-height: 90px; }
 .form-row { display: grid; grid-template-columns: 1fr; gap: 14px; }
 
-.footer { background: var(--text-dark); color: rgba(255,255,255,0.8); padding: 50px 5% 30px; }
-.footer-brand { text-align: center; margin-bottom: 28px; }
-.footer-brand img {
+.footer { background: var(--text-dark); color: rgba(255,255,255,0.8); padding: 60px 5% 30px; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+.footer-col h4 { font-size: 1.1rem; color: var(--white); margin-bottom: 20px; position: relative; font-weight: 700; }
+.footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 30px; height: 2px; background: var(--accent); }
+.footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul a { font-size: 0.9rem; color: rgba(255,255,255,0.7); transition: var(--transition); }
+.footer-col ul a:hover { color: var(--accent-light); padding-left: 4px; }
+.footer-about img {
   height: 48px;
   width: auto;
   background: var(--white);
   padding: 6px 16px;
   border-radius: 8px;
-  margin: 0 auto 16px;
-  display: block;
+  margin-bottom: 16px;
+  display: inline-block;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.footer-note { font-size: 0.92rem; max-width: 560px; margin: 0 auto; line-height: 1.65; color: rgba(255,255,255,0.7); }
+.footer-note { font-size: 0.92rem; line-height: 1.65; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+.footer-contact-info { display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+.footer-contact-info p { display: flex; align-items: center; gap: 8px; }
+.footer-contact-info i { color: var(--accent-light); }
+.footer-contact-info a { transition: var(--transition); }
+.footer-contact-info a:hover { color: var(--accent-light); }
 .footer-bottom {
   display: flex; flex-direction: column; align-items: center; gap: 14px;
   padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
 }
 .footer-copy { font-size: 0.88rem; text-align: center; color: rgba(255,255,255,0.65); }
-.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-.footer-legal a { font-size: 0.88rem; color: var(--accent-light); font-weight: 600; transition: var(--transition); }
-.footer-legal a:hover { color: white; text-decoration: underline; }
 
 /* ─── MODAL (Mobile Default) ─── */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
@@ -411,6 +418,35 @@ section { padding: 60px 5%; }
 .loan-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
 
+/* ─── DROPDOWN BASE (Mobile Default) ─── */
+.nav-dropdown {
+  position: relative;
+  width: 100%;
+}
+.nav-dropdown > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 16px;
+  margin-top: 10px;
+  border-left: 2px solid var(--accent);
+  width: 100%;
+}
+.nav-dropdown.active .dropdown-menu {
+  display: flex;
+}
+.dropdown-menu a {
+  font-size: 0.85rem !important;
+  color: var(--gray-600) !important;
+  font-weight: 500 !important;
+}
+
 /* ==========================================================================
    PROGRESSIVE ENHANCEMENT (MOBILE FIRST MEDIA QUERIES)
    ========================================================================== */
@@ -430,6 +466,7 @@ section { padding: 60px 5%; }
   .carousel-btn { width: 48px; height: 48px; }
   
   .loan-page-hero { padding: 140px 5% 70px; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ─── Desktop/Large Tablet Breakpoint (min-width: 901px) ─── */
@@ -456,6 +493,56 @@ section { padding: 60px 5%; }
   
   .contact-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr 1fr; }
+
+  /* Dropdown Styles Desktop */
+  .nav-dropdown { position: relative; width: auto; }
+  .nav-dropdown > a { display: inline-flex; gap: 6px; align-items: center; }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--white);
+    min-width: 210px;
+    padding: 12px 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    z-index: 1000;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 0;
+    margin-top: 0;
+    border-left: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .nav-dropdown:hover .dropdown-menu {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .dropdown-menu li { width: 100%; }
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 24px;
+    font-size: 0.88rem !important;
+    color: var(--text-dark) !important;
+    font-weight: 600 !important;
+    transition: var(--transition);
+    text-align: left;
+  }
+  .dropdown-menu a:hover {
+    background: var(--off-white);
+    color: var(--accent) !important;
+    padding-left: 28px;
+  }
+
+  /* Footer Grid Desktop */
+  .footer-grid { grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr; gap: 40px; }
 }
 
 /* ─── Large Desktop Breakpoint (min-width: 1025px) ─── */
