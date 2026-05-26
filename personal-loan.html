@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Personal Loans | Integral Loans</title>
+<meta name="description" content="Flexible personal loan options with expert guidance from Integral Loans."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="nav-top-bar"><a href="tel:+919167331557"><i class="fa fa-phone"></i> +91 91673 31557</a></div>
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html"><span class="nav-logo-text" style="display:flex">Integral Loans</span></a>
+  <div class="nav-cta"><button class="btn btn-primary" onclick="openModal('Personal Loan')">Apply Now</button></div>
+</nav>
+<p class="breadcrumb"><a href="index.html">Home</a> / Personal Loan</p>
+<section class="loan-page-hero">
+  <h1>Personal Loans</h1>
+  <p class="hero-sub">Meet your personal financial needs with our flexible personal loan options.</p>
+  <button class="btn btn-primary" onclick="openModal('Personal Loan')"><i class="fa fa-file-alt"></i> Apply Now</button>
+</section>
+<section class="services"><div class="loan-content text-center"><p>Affordable EMIs, transparent service, and faster approvals across MMR &amp; Palghar.</p><a href="index.html#contact" class="btn btn-outline" style="margin-top:20px;display:inline-flex;">Contact Us</a></div></section>
+<footer class="footer"><div class="footer-bottom"><p class="footer-copy">&copy; 2026 Integral Loans</p><nav class="footer-legal"><a href="index.html">Home</a></nav></div></footer>
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)"><div class="modal"><button class="modal-close" onclick="closeModal()">&times;</button><span class="loan-type-badge" id="modalLoanBadge">Personal Loan</span><h2>Apply for Your Loan</h2><form onsubmit="handleModalSubmit(event)"><div class="form-group"><label for="m-name">Full Name *</label><input type="text" id="m-name" required/></div><div class="form-group"><label for="m-phone">Mobile *</label><input type="tel" id="m-phone" required/></div><div class="form-group"><label for="m-loan">Loan Type</label><select id="m-loan"><option selected>Personal Loan</option></select></div><button type="submit" class="btn btn-primary" style="width:100%">Submit</button></form></div></div>
+<div id="toast" style="display:none;position:fixed;bottom:30px;right:30px;background:#1a3a6b;color:#fff;padding:16px 24px;border-radius:12px;z-index:3000"><span id="toastMsg"></span></div>
+<script src="main.js"></script>
+</body>
+</html>
